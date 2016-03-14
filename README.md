@@ -8,7 +8,7 @@ It was developed using a shared NodeJs and browser javascript file (src/shared/p
 Install the latest version of NodeJs: https://nodejs.org
 Install NPM dependencies: npm install;
 Run: node arguments fileName
-Example: node tom dom angel src/shared/word_dict.txt
+Example: node src/node/phoneticSearch.js 1ton# brief soon src/shared/word_dict.txt
 ```
 
 ## Running web version - using Gulp
