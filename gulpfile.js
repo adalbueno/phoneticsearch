@@ -19,9 +19,11 @@ var bases = {
 };
 
 var paths = {
-  html: ['**/*.html'],
-  js: ['assets/**/*.js'],
-  css: ['assets/**/*.scss']
+  html: ['html/**/*.html'],
+  js: ['html/**/*.js'],
+  css: ['html/**/*.scss'],
+  sharedJs: ['shared/**/*.js'],
+  sharedTxt: ['shared/**/*.txt'],
 };
 
 gulp.task('clean', function(callback) {
@@ -49,6 +51,19 @@ gulp.task('css', function() {
     .pipe(connect.reload())
 });
 
+gulp.task('sharedJs', function() {
+  return gulp.src(paths.sharedJs, {cwd: bases.src})
+    .pipe(concat('components.js'))
+    .pipe(gulp.dest(bases.dest + 'assets/js/components/'))
+    .pipe(connect.reload())
+});
+
+gulp.task('sharedTxt', function() {
+  return gulp.src(paths.sharedTxt, {cwd: bases.src})
+    .pipe(gulp.dest(bases.dest + 'assets/data/'))
+    .pipe(connect.reload())
+});
+
 gulp.task('connect', function() {
   connect.server({
     root: bases.dest,
@@ -59,12 +74,13 @@ gulp.task('connect', function() {
 
 gulp.task('watch', function() {
   gulp.watch(paths.html, {cwd: bases.src}, ['html']);
+  gulp.watch(paths.sharedJs, {cwd: bases.src}, ['sharedJs']);
   gulp.watch(paths.js, {cwd: bases.src}, ['js']);
   gulp.watch(paths.css, {cwd: bases.src}, ['css']);
 });
 
 gulp.task('default', function(callback) {
-  runSequence('clean', ['html', 'js', 'css'], callback);
+  runSequence('clean', ['html', 'js', 'css', 'sharedJs', 'sharedTxt'], callback);
 });
 
 gulp.task('server', function(callback) {

@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 14px;
+}
+
+p, dl, dd, input {
+  margin-bottom: 20px;
+}
+
+dt { display: block; }
+dd { font-style: italic; }
+
+input {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+input[type=text] {
+  margin-bottom: 5px;
+}
+
+.wrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px 10px;
+}
+
+#error {
+  color: #c00;
+}
+
+#success {
+  color: #0a0;
+}
